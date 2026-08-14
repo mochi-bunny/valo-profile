@@ -10,16 +10,16 @@
       { "label": "Focus",  "value": "Artificial Intelligence" },
       { "label": "Status", "value": "Graduate Student" }
     ],
-    "resumeUrl": "resume.pdf",
-    "email": "megha.manoj@gelsight.com"
+    "resumeUrl": "https://drive.google.com/file/d/1cXb5g3CDshN0Isy0Rhmsj8urDgG_Ba1K/view?usp=drivesdk",
+    "email": "manojmegha2002@gmail.com"
   },
 
   "sectionNotes": {
     "skills": "",
     "education": "Degrees, focus areas, and the coursework that backs them.",
     "experience": "Where I've worked and what changed while I was there.",
-    "projects": "Built end to end — problem, approach, and the thing someone uses.",
-    "extracurriculars": "The things outside the job description."
+    "projects": "",
+    "extracurriculars": ""
   },
 
   "skills": [
@@ -41,7 +41,7 @@
     {
       "group": "Platform",
       "note": "Tooling",
-      "items": [".NET", "Docker", "AWS", "Git / CI", "NumPy / Pandas"]
+      "items": [".NET", "Docker", "AWS","Azure", "Git / CI", "NumPy / Pandas"]
     }
   ],
 
@@ -53,7 +53,7 @@
       "endDate": "",
       "current": true,
       "description": "Concentration in machine learning and computer vision. Thesis or capstone topic in one line.",
-      "coursework": ["Deep Learning", "Computer Vision", "Natural Language Processing", "Optimization"]
+      "coursework": ["Foundations of A.I", "Algorithms", "Computer Vision", "Applied Programming and Data Preprocessing", "Machine Learning"]
     },
     {
       "degree": "B.E Computer Science",
@@ -67,8 +67,9 @@
         "Computer Networks",
         "Data Structures & Algorithms",
         "Operating Systems",
-        "Database Systems",
-        "Computer Architecture"
+        "Database Management Systems",
+        "Computer Architecture",
+        "Natural Language Processing", "Software Engineering", "Data Mining"
       ]
     }
   ],
