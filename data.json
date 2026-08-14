@@ -1,0 +1,154 @@
+{
+  "profile": {
+    "name": "Megha Manoj",
+    "role": "AI/ML Engineer",
+    "railText": "",
+    "tagline": "Graduate student and engineer building machine learning systems that ship — models that leave the notebook, survive real data, and run fast enough to sit inside someone's daily workflow.",
+    "taglineEmphasis": "machine learning systems that ship",
+    "facts": [
+      { "label": "Based",  "value": "Boston, MA" },
+      { "label": "Focus",  "value": "Artificial Intelligence" },
+      { "label": "Status", "value": "Graduate Student" }
+    ],
+    "resumeUrl": "resume.pdf",
+    "email": "megha.manoj@gelsight.com"
+  },
+
+  "sectionNotes": {
+    "skills": "",
+    "education": "Degrees, focus areas, and the coursework that backs them.",
+    "experience": "Where I've worked and what changed while I was there.",
+    "projects": "Built end to end — problem, approach, and the thing someone uses.",
+    "extracurriculars": "The things outside the job description."
+  },
+
+  "skills": [
+    {
+      "group": "Machine Learning",
+      "note": "Core",
+      "items": ["PyTorch", "TensorFlow / Keras", "scikit-learn", "Hugging Face", "ONNX Runtime"]
+    },
+    {
+      "group": "Languages",
+      "note": "Daily",
+      "items": ["Python", "C#", "SQL", "C++", "JavaScript"]
+    },
+    {
+      "group": "Modeling",
+      "note": "Domain",
+      "items": ["CNNs & ViTs", "Semantic segmentation", "NLP", "Self-supervised learning", "Model evaluation"]
+    },
+    {
+      "group": "Platform",
+      "note": "Tooling",
+      "items": [".NET", "Docker", "AWS", "Git / CI", "NumPy / Pandas"]
+    }
+  ],
+
+  "education": [
+    {
+      "degree": "M.S. Artificial Intelligence",
+      "university": "Northeastern University",
+      "startDate": "Sept 2024",
+      "endDate": "",
+      "current": true,
+      "description": "Concentration in machine learning and computer vision. Thesis or capstone topic in one line.",
+      "coursework": ["Deep Learning", "Computer Vision", "Natural Language Processing", "Optimization"]
+    },
+    {
+      "degree": "B.E Computer Science",
+      "university": "Birla Institute of Technology & Science, Pilani - Dubai",
+      "startDate": "Sept 2020",
+      "endDate": "July 2024",
+      "current": false,
+      "description": "",
+      "coursework": [
+        "Object Oriented Programming",
+        "Computer Networks",
+        "Data Structures & Algorithms",
+        "Operating Systems",
+        "Database Systems",
+        "Computer Architecture"
+      ]
+    }
+  ],
+
+  "experience": [
+    {
+      "title": "AI Engineer Intern",
+      "organization": "Klipit AI",
+      "startDate": "Jan 2024",
+      "endDate": "July 2024",
+      "current": false,
+      "description": "One line on what you built and what it changed.",
+      "skills": []
+    },
+    {
+      "title": "A.I and Cloud Intern",
+      "organization": "Gelsight, Inc",
+      "startDate": "May 2026",
+      "endDate": "Aug 2026",
+      "current": true,
+      "description": "Copy this block for each role, or delete it if you only have one.",
+      "skills": []
+    }
+  ],
+
+  "projects": [
+    {
+      "name": "Inventory Application",
+      "kind": "Personal",
+      "description": ".NET app which simplifies inventory processes.",
+      "skills": ["Python", "C#", ".NET"],
+      "link": "https://github.com/your-username/inventory-application",
+      "metric": { "value": "", "label": "" }
+    },
+    {
+      "name": "Second Project",
+      "kind": "Coursework",
+      "description": "Copy this block for each project. Leave metric values empty and the stat line is skipped.",
+      "skills": ["Python", "PyTorch"],
+      "link": "",
+      "metric": { "value": "", "label": "" }
+    }
+  ],
+
+  "extracurriculars": [
+    {
+      "label": "Community",
+      "title": "Organization name",
+      "description": "Your role and what you did — mentoring, running events, leading a chapter."
+    },
+    {
+      "label": "Teaching",
+      "title": "Workshop or course",
+      "description": "What you taught, to whom, and roughly how many people came through it."
+    },
+    {
+      "label": "Competition",
+      "title": "Hackathon or Kaggle",
+      "description": "The event, what you built or placed, and the team you did it with."
+    },
+    {
+      "label": "Interests",
+      "title": "Outside the terminal",
+      "description": "Something human — the hobby, the sport, the instrument. One line is plenty."
+    }
+  ],
+
+  "links": [
+    { "label": "GitHub",   "url": "https://github.com/mochi-bunny" },
+    { "label": "LinkedIn", "url": "https://www.linkedin.com/in/megha-manoj-cs" },
+    { "label": "Resume",   "url": "resume.pdf" }
+  ],
+
+  "contact": {
+    "heading": "Let's talk",
+    "body": "I'm a graduate student looking for AI/ML engineering roles and internships, and always happy to talk about interesting problems in the field. The fastest way to reach me is email."
+  },
+
+  "footer": {
+    "left": "© 2026 Megha Manoj",
+    "right": ""
+  }
+}
