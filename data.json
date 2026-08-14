@@ -49,8 +49,8 @@
     {
       "degree": "M.S. Artificial Intelligence",
       "university": "Northeastern University",
-      "startDate": "Sept 2024",
-      "endDate": "",
+      "startDate": "Sept 2025",
+      "endDate": "Expected: May 2027",
       "current": true,
       "description": "Concentration in machine learning and computer vision. Thesis or capstone topic in one line.",
       "coursework": ["Foundations of A.I", "Algorithms", "Computer Vision", "Applied Programming and Data Preprocessing", "Machine Learning"]
@@ -74,23 +74,50 @@
     }
   ],
 
-  "experience": [
-    {
-      "title": "AI Engineer Intern",
-      "organization": "Klipit AI",
-      "startDate": "Jan 2024",
-      "endDate": "July 2024",
-      "current": false,
-      "description": "One line on what you built and what it changed.",
-      "skills": []
-    },
+  "experience": [ 
     {
       "title": "A.I and Cloud Intern",
       "organization": "Gelsight, Inc",
       "startDate": "May 2026",
       "endDate": "Aug 2026",
       "current": true,
-      "description": "Copy this block for each role, or delete it if you only have one.",
+      "description": "",
+      "skills": []
+    },
+    {
+      "title": "Data Analyst",
+      "organization": "TECH UNICORN DMCC",
+      "startDate": "Aug 2024",
+      "endDate": "July 2025",
+      "current": false,
+      "description": "",
+      "skills": []
+    },
+    {
+      "title": "AI Engineer Intern",
+      "organization": "Klipit AI",
+      "startDate": "Jan 2024",
+      "endDate": "July 2024",
+      "current": false,
+      "description": "",
+      "skills": []
+    },
+    {
+      "title": "Lab Assistant",
+      "organization": "Birla Institute of Technology & Science, Pilani - Dubai",
+      "startDate": "Sept 2023",
+      "endDate": "Dec 2023",
+      "current": false,
+      "description": "",
+      "skills": []
+    },
+    {
+      "title": "Digital Analyst Intern",
+      "organization": "Enterprise Change Specialists",
+      "startDate": "June 2022",
+      "endDate": "Aug 2022",
+      "current": false,
+      "description": "",
       "skills": []
     }
   ],
