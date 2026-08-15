@@ -124,47 +124,51 @@
         <p></p>
       </div>
       <!-- EDIT: every item below -->
-      <div class="skills">
-        <div class="col notch fade">
-          <div class="col__h"><b>Machine Learning</b><i>Core</i></div>
-          <ul>
-            <li>PyTorch</li>
-            <li>TensorFlow / Keras</li>
-            <li>scikit-learn</li>
-            <li>Hugging Face</li>
-            <li>ONNX Runtime</li>
-          </ul>
+      <div class="hscroll-wrap">
+        <button type="button" class="scroll-arrow scroll-arrow--left" aria-label="Scroll left"><i aria-hidden="true"></i><i aria-hidden="true"></i></button>
+        <div class="skills hscroll">
+          <div class="col notch fade">
+            <div class="col__h"><b>Machine Learning</b><i>Core</i></div>
+            <ul>
+              <li>PyTorch</li>
+              <li>TensorFlow / Keras</li>
+              <li>scikit-learn</li>
+              <li>Hugging Face</li>
+              <li>ONNX Runtime</li>
+            </ul>
+          </div>
+          <div class="col notch fade">
+            <div class="col__h"><b>Languages &amp; Data</b><i>Daily</i></div>
+            <ul>
+              <li>Python</li>
+              <li>SQL</li>
+              <li>C++</li>
+              <li>NumPy / Pandas</li>
+              <li>Polars</li>
+            </ul>
+          </div>
+          <div class="col notch fade">
+            <div class="col__h"><b>Modeling</b><i>Domain</i></div>
+            <ul>
+              <li>CNNs &amp; ViTs</li>
+              <li>Semantic segmentation</li>
+              <li>3D reconstruction</li>
+              <li>Self-supervised learning</li>
+              <li>Model compression</li>
+            </ul>
+          </div>
+          <div class="col notch fade">
+            <div class="col__h"><b>Platform</b><i>MLOps</i></div>
+            <ul>
+              <li>Docker</li>
+              <li>AWS / S3 / EC2</li>
+              <li>MLflow</li>
+              <li>Weights &amp; Biases</li>
+              <li>CI/CD pipelines</li>
+            </ul>
+          </div>
         </div>
-        <div class="col notch fade">
-          <div class="col__h"><b>Languages &amp; Data</b><i>Daily</i></div>
-          <ul>
-            <li>Python</li>
-            <li>SQL</li>
-            <li>C++</li>
-            <li>NumPy / Pandas</li>
-            <li>Polars</li>
-          </ul>
-        </div>
-        <div class="col notch fade">
-          <div class="col__h"><b>Modeling</b><i>Domain</i></div>
-          <ul>
-            <li>CNNs &amp; ViTs</li>
-            <li>Semantic segmentation</li>
-            <li>3D reconstruction</li>
-            <li>Self-supervised learning</li>
-            <li>Model compression</li>
-          </ul>
-        </div>
-        <div class="col notch fade">
-          <div class="col__h"><b>Platform</b><i>MLOps</i></div>
-          <ul>
-            <li>Docker</li>
-            <li>AWS / S3 / EC2</li>
-            <li>MLflow</li>
-            <li>Weights &amp; Biases</li>
-            <li>CI/CD pipelines</li>
-          </ul>
-        </div>
+        <button type="button" class="scroll-arrow scroll-arrow--right" aria-label="Scroll right"><i aria-hidden="true"></i><i aria-hidden="true"></i></button>
       </div>
     </div>
   </section>
@@ -257,28 +261,32 @@
         <p>Built end to end — problem, model, and the interface someone uses.</p>
       </div>
       <!-- EDIT: all three cards, including the metrics -->
-      <div class="cards">
-        <article class="card notch fade">
-          <div class="card__top"><span class="card__kind">Deployed</span><span class="card__n">01</span></div>
-          <h3>Project One</h3>
-          <p>One or two sentences on the problem, the approach you took, and what it does now that it didn't before. Keep it concrete.</p>
-          <ul class="tags"><li>PyTorch</li><li>OpenCV</li><li>FastAPI</li><li>Docker</li></ul>
-          <div class="card__stat"><b>00%</b><span>Headline metric</span></div>
-        </article>
-        <article class="card notch fade">
-          <div class="card__top"><span class="card__kind">Research</span><span class="card__n">02</span></div>
-          <h3>Project Two</h3>
-          <p>What question you were answering, what you tried, and the result — including the part that didn't work if it's interesting.</p>
-          <ul class="tags"><li>Transformers</li><li>Hugging Face</li><li>W&amp;B</li><li>Python</li></ul>
-          <div class="card__stat"><b>0.00</b><span>Score / baseline</span></div>
-        </article>
-        <article class="card notch fade">
-          <div class="card__top"><span class="card__kind">Open source</span><span class="card__n">03</span></div>
-          <h3>Project Three</h3>
-          <p>A tool or library you released. Say who it's for and what it saves them, then link the repo from the title.</p>
-          <ul class="tags"><li>Python</li><li>NumPy</li><li>CLI</li><li>PyPI</li></ul>
-          <div class="card__stat"><b>000</b><span>Stars / users</span></div>
-        </article>
+      <div class="hscroll-wrap">
+        <button type="button" class="scroll-arrow scroll-arrow--left" aria-label="Scroll left"><i aria-hidden="true"></i><i aria-hidden="true"></i></button>
+        <div class="cards hscroll">
+          <article class="card notch fade">
+            <div class="card__top"><span class="card__kind">Deployed</span><span class="card__n">01</span></div>
+            <h3>Project One</h3>
+            <p>One or two sentences on the problem, the approach you took, and what it does now that it didn't before. Keep it concrete.</p>
+            <ul class="tags"><li>PyTorch</li><li>OpenCV</li><li>FastAPI</li><li>Docker</li></ul>
+            <div class="card__stat"><b>00%</b><span>Headline metric</span></div>
+          </article>
+          <article class="card notch fade">
+            <div class="card__top"><span class="card__kind">Research</span><span class="card__n">02</span></div>
+            <h3>Project Two</h3>
+            <p>What question you were answering, what you tried, and the result — including the part that didn't work if it's interesting.</p>
+            <ul class="tags"><li>Transformers</li><li>Hugging Face</li><li>W&amp;B</li><li>Python</li></ul>
+            <div class="card__stat"><b>0.00</b><span>Score / baseline</span></div>
+          </article>
+          <article class="card notch fade">
+            <div class="card__top"><span class="card__kind">Open source</span><span class="card__n">03</span></div>
+            <h3>Project Three</h3>
+            <p>A tool or library you released. Say who it's for and what it saves them, then link the repo from the title.</p>
+            <ul class="tags"><li>Python</li><li>NumPy</li><li>CLI</li><li>PyPI</li></ul>
+            <div class="card__stat"><b>000</b><span>Stars / users</span></div>
+          </article>
+        </div>
+        <button type="button" class="scroll-arrow scroll-arrow--right" aria-label="Scroll right"><i aria-hidden="true"></i><i aria-hidden="true"></i></button>
       </div>
     </div>
   </section>
@@ -617,6 +625,27 @@
     Object.keys(links).forEach(function(id){
       var s = document.getElementById(id);
       if (s) spy.observe(s);
+    });
+
+    // Skills / Projects horizontal scroll strips — arrow buttons page the
+    // strip by one card's width (+ gap) at a time.
+    document.querySelectorAll('.hscroll-wrap').forEach(function(wrap){
+      var track = wrap.querySelector('.hscroll');
+      var left = wrap.querySelector('.scroll-arrow--left');
+      var right = wrap.querySelector('.scroll-arrow--right');
+      if (!track) return;
+      function step(){
+        var item = track.firstElementChild;
+        if (!item) return track.clientWidth;
+        var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+        return item.getBoundingClientRect().width + gap;
+      }
+      if (left) left.addEventListener('click', function(){
+        track.scrollBy({ left: -step(), behavior: 'smooth' });
+      });
+      if (right) right.addEventListener('click', function(){
+        track.scrollBy({ left: step(), behavior: 'smooth' });
+      });
     });
   }
 

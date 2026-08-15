@@ -15,33 +15,43 @@
   },
 
   "sectionNotes": {
-    "skills": "",
+    "skills": "Tools and frameworks I reach for daily, grouped by where they show up.",
     "education": "Degrees, focus areas, and the coursework that backs them.",
     "experience": "Where I've worked and what changed while I was there.",
-    "projects": "",
-    "extracurriculars": ""
+    "projects": "Systems I built end to end, on teams and solo.",
+    "extracurriculars": "Where I show up outside of coursework and internships."
   },
 
   "skills": [
     {
-      "group": "Machine Learning",
+      "group": "Machine Learning & AI",
       "note": "Core",
-      "items": ["PyTorch", "TensorFlow / Keras", "scikit-learn", "Hugging Face", "ONNX Runtime"]
+      "items": ["PyTorch", "TensorFlow / Keras", "Scikit-Learn", "Hugging Face", "LangChain", "RAG", "OpenAI", "Gemini"]
     },
     {
       "group": "Languages",
       "note": "Daily",
-      "items": ["Python", "C#", "SQL", "C++", "JavaScript"]
+      "items": ["Python", "C#", "SQL", "C++", "Java", "JavaScript", "TypeScript", "R"]
     },
     {
-      "group": "Modeling",
+      "group": "Deep Learning",
       "note": "Domain",
-      "items": ["CNNs & ViTs", "Semantic segmentation", "NLP", "Self-supervised learning", "Model evaluation"]
+      "items": ["CNN", "U-Net", "Image Segmentation", "Computer Vision", "NLP", "OpenCV"]
     },
     {
-      "group": "Platform",
+      "group": "Cloud & Platform",
       "note": "Tooling",
-      "items": [".NET", "Docker", "AWS","Azure", "Git / CI", "NumPy / Pandas"]
+      "items": ["Azure (App Service, OpenAI Service, RPA)", "AWS SageMaker", "Docker", "MySQL", "Firebase", "MongoDB", "Linux", "Git"]
+    },
+    {
+      "group": "Data & Visualization",
+      "note": "Analysis",
+      "items": ["Power BI", "Pandas", "NumPy", "Matplotlib", "Seaborn"]
+    },
+    {
+      "group": "Development",
+      "note": "Full Stack",
+      "items": ["Django", "Flask", "Next.js", "REST APIs", "Streamlit", "HTML/CSS"]
     }
   ],
 
@@ -52,8 +62,8 @@
       "startDate": "Sept 2025",
       "endDate": "Expected: May 2027",
       "current": true,
-      "description": "Concentration in machine learning and computer vision. Thesis or capstone topic in one line.",
-      "coursework": ["Foundations of A.I", "Algorithms", "Computer Vision", "Applied Programming and Data Preprocessing", "Machine Learning"]
+      "description": "GPA: 3.5/4. Concentration in machine learning and computer vision, with coursework spanning applied AI systems, algorithms, and probability for data science.",
+      "coursework": ["Foundations of Artificial Intelligence", "Algorithms", "Linear Algebra and Probability for Data Science", "Programming and Data Processing for AI"]
     },
     {
       "degree": "B.E Computer Science",
@@ -61,7 +71,7 @@
       "startDate": "Sept 2020",
       "endDate": "July 2024",
       "current": false,
-      "description": "",
+      "description": "GPA: 3.6/4. Focused on core CS fundamentals alongside AI and NLP electives.",
       "coursework": [
         "Object Oriented Programming",
         "Computer Networks",
@@ -74,8 +84,8 @@
     }
   ],
 
-  "experience": [ 
-     {
+  "experience": [
+    {
       "title": "Teaching Assistant (NLP)",
       "organization": "Northeastern University",
       "startDate": "Sept 2026",
@@ -90,8 +100,8 @@
       "startDate": "May 2026",
       "endDate": "Aug 2026",
       "current": true,
-      "description": "",
-      "skills": []
+      "description": "Built desktop QC/inventory apps in .NET with a cloud-archived database, cutting inspection time from 3 to 1 minute per unit. Trained a YOLO-v11 model on 10,000+ augmented images from industrial machine vision setups (80% detection accuracy), and built Power BI dashboards alongside a RAG chatbot website with automated lead generation.",
+      "skills": [".NET", "YOLO-v11", "Power BI", "RAG", "SQL"]
     },
     {
       "title": "Data Analyst",
@@ -99,8 +109,8 @@
       "startDate": "Aug 2024",
       "endDate": "July 2025",
       "current": false,
-      "description": "",
-      "skills": []
+      "description": "Built Power BI dashboards across 10+ departments, increasing operational visibility by 40%. Automated document review workflows with Azure RPA (78 docs/hour, saving 20+ staff hours weekly). Engineered RAG-powered chatbots using OpenAI GPT-4 and Microsoft Copilot with SQL/Dataverse API integration, achieving 85% user adoption in 3 months and automating 80% of customer inquiries, and implemented Azure OpenAI semantic search for real-time patient analytics.",
+      "skills": ["Power BI", "Azure RPA", "OpenAI GPT-4", "Microsoft Copilot", "SQL", "Dataverse API"]
     },
     {
       "title": "AI Engineer Intern",
@@ -108,8 +118,8 @@
       "startDate": "Jan 2024",
       "endDate": "July 2024",
       "current": false,
-      "description": "",
-      "skills": []
+      "description": "Developed computer vision POCs for anti-counterfeiting using ResNet, improving detection reliability by 30%. Designed a secure tagging workflow for supply-chain traceability and engineered an OCR-NLP pipeline using Tesseract and spaCy, reducing manual processing by 45%. Led sprint planning and presented findings to senior management to guide R&D strategy.",
+      "skills": ["ResNet", "OCR", "Tesseract", "spaCy", "Computer Vision"]
     },
     {
       "title": "Lab Assistant",
@@ -117,8 +127,8 @@
       "startDate": "Sept 2023",
       "endDate": "Dec 2023",
       "current": false,
-      "description": "",
-      "skills": []
+      "description": "Mentored 50+ students in Java and OOP through weekly Q&A sessions and code reviews, improving assignment accuracy by 40%. Facilitated debugging workshops across multiple lab sections, raising class performance by 15%, and implemented a peer mentoring framework that improved student engagement.",
+      "skills": ["Java", "OOP", "Mentoring"]
     },
     {
       "title": "Digital Analyst Intern",
@@ -126,25 +136,41 @@
       "startDate": "June 2022",
       "endDate": "Aug 2022",
       "current": false,
-      "description": "",
-      "skills": []
+      "description": "Executed market analysis identifying 70+ qualified client prospects, expanding the sales pipeline by 15%. Optimized digital promotion strategies across company channels, increasing engagement metrics by 25%, and implemented Go-Live workflow automation that reduced project closure time by 10%.",
+      "skills": ["Market Analysis", "Digital Marketing", "Process Automation"]
     }
   ],
 
   "projects": [
     {
-      "name": "Inventory Application",
-      "kind": "Personal",
-      "description": ".NET app which simplifies inventory processes.",
-      "skills": ["Python", "C#", ".NET"],
-      "link": "https://github.com/your-username/inventory-application",
-      "metric": { "value": "", "label": "" }
+      "name": "Leap: TII CrowdLabel Challenge",
+      "kind": "Competition",
+      "description": "Led development of an AI-powered crowdsourcing platform with LLM-based automated feedback, adaptive difficulty adjustment, and gamification, achieving first place in TII's Crowd Labelling Challenge. Deployed on Azure App Service using Django and SQL, with user clustering for competitive ranking and Power BI dashboards tracking engagement patterns.",
+      "skills": ["Python", "Azure", "Django", "MySQL", "Docker", "Power BI"],
+      "link": "https://github.com/mochi-bunny",
+      "metric": { "value": "1st Place", "label": "TII Crowd Labelling Challenge" }
     },
     {
-      "name": "Second Project",
-      "kind": "Coursework",
-      "description": "Copy this block for each project. Leave metric values empty and the stat line is skipped.",
-      "skills": ["Python", "PyTorch"],
+      "name": "QC Inspection & Defect Tracking Software",
+      "kind": "Professional",
+      "description": "Built a desktop application digitizing manual GelSight probe QC into a structured, auditable workflow. Integrated YOLO for live defect detection on custom-preprocessed probe images, a separate FlyCapture camera + OCR step for product/serial extraction, and a Review dashboard backed by a normalized SQLite schema.",
+      "skills": ["C#", ".NET", "SQLite", "YOLO", "OpenCvSharp", "FlyCapture SDK"],
+      "link": "",
+      "metric": { "value": "3 min → 1 min", "label": "inspection time per unit" }
+    },
+    {
+      "name": "Marine Debris Detection Using Image Segmentation",
+      "kind": "Team Project",
+      "description": "Led a 5-member team building a U-Net segmentation model for sonar-based marine debris detection, with a custom data augmentation pipeline and a Streamlit interface for real-time inference.",
+      "skills": ["Python", "TensorFlow", "Keras", "OpenCV", "Streamlit"],
+      "link": "https://github.com/mochi-bunny/SIC-project",
+      "metric": { "value": "0.85", "label": "Dice similarity score" }
+    },
+    {
+      "name": "OptiTunity",
+      "kind": "Personal",
+      "description": "Career pathway platform integrating Google Sheets API and a RAG application using Gemini for real-time job market insights, built during the Headstarter AI Fellowship.",
+      "skills": ["React.js", "Next.js", "Firebase", "Gemini API"],
       "link": "",
       "metric": { "value": "", "label": "" }
     }
@@ -153,23 +179,23 @@
   "extracurriculars": [
     {
       "label": "Community",
-      "title": "Organization name",
-      "description": "Your role and what you did — mentoring, running events, leading a chapter."
+      "title": "ACM-W, BITS Pilani Dubai Chapter",
+      "description": "Served as Technical Events Head, leading a team of 3 to run 15+ technical workshops and coding contests for 200+ students."
     },
     {
-      "label": "Teaching",
-      "title": "Workshop or course",
-      "description": "What you taught, to whom, and roughly how many people came through it."
+      "label": "Fellowship",
+      "title": "Headstarter AI Software Engineering Fellowship",
+      "description": "Built and deployed 5 AI projects in 5 weeks, working alongside engineers from Google, Y Combinator, and Stanford."
     },
     {
       "label": "Competition",
-      "title": "Hackathon or Kaggle",
-      "description": "The event, what you built or placed, and the team you did it with."
+      "title": "Technology Innovation Institute — Crowd Labelling Challenge",
+      "description": "Won 1st place building LEAP, an AI-powered crowdsourcing platform, competing against regional teams."
     },
     {
       "label": "Interests",
       "title": "Outside the terminal",
-      "description": "Something human — the hobby, the sport, the instrument. One line is plenty."
+      "description": ""
     }
   ],
 
@@ -186,6 +212,6 @@
 
   "footer": {
     "left": "© 2026 Megha Manoj",
-    "right": ""
+    "right": "Built with care."
   }
 }
