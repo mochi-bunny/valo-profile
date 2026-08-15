@@ -423,7 +423,7 @@ section{padding:104px 0}
 }
 .scroll-arrow i{
   position:absolute;top:50%;width:10px;height:10px;margin-top:-5px;
-  border:0 solid var(--iso-violet);
+  border:0 solid var(--cyan);
 }
 .scroll-arrow i:first-child{left:0}
 .scroll-arrow i:last-child{left:9px}
