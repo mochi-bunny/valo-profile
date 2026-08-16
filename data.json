@@ -178,7 +178,7 @@
       "kind": "Professional",
       "description": "Built a desktop application digitizing manual GelSight probe QC into a structured, auditable workflow. Integrated YOLO for live defect detection on custom-preprocessed probe images, a separate FlyCapture camera + OCR step for product/serial extraction, and a Review dashboard backed by a normalized SQLite schema.",
       "skills": ["C#", ".NET", "SQLite", "YOLO", "OpenCvSharp", "FlyCapture SDK"],
-      "link": "",
+      "link": "https://github.com/mochi-bunny/quality-inspection",
       "metric": { "value": "3 min → 1 min", "label": "inspection time per unit" }
     },
     {
@@ -194,7 +194,7 @@
       "kind": "Personal",
       "description": "Career pathway platform integrating Google Sheets API and a RAG application using Gemini for real-time job market insights, built during the Headstarter AI Fellowship.",
       "skills": ["React.js", "Next.js", "Firebase", "Gemini API"],
-      "link": "",
+      "link": "https://github.com/mochi-bunny/OptiTunity",
       "metric": { "value": "", "label": "" }
     }
   ],

@@ -726,7 +726,8 @@
     glowWidth: 1,
     rotateMode: 'sync', snapDuration: 0, snapInterval: 0, stagger: 0,
     reverse: false, alternate: false, drift: .02, breathe: 1, cascade: 0,
-    speed: 1, shockwaves: false
+    speed: 1, shockwaves: false,
+    core: false, coreSpeed: 1.6         // tiny self-similar copy at the center
   };
 
   function Mandala(target, opts){
@@ -772,7 +773,10 @@
   };
 
   // Rotation angle for level i on its own (possibly staggered) clock `te`.
-  Mandala.prototype._levelAngle = function(i, te){
+  // `track` gates shockwave bookkeeping — the tiny core echo shares the same
+  // level indices as the main rings, so it passes false to avoid double-
+  // triggering (and double-counting) shockwaves off the same snaps.
+  Mandala.prototype._levelAngle = function(i, te, track){
     var o = this.o;
     var dir = (o.alternate && i % 2 === 1) ? -1 : 1;
     if (o.reverse) dir *= -1;
@@ -793,17 +797,38 @@
       angle = k * step + step * easeInOutCubic(clamp(p, 0, 1));
     }
 
-    if (o.shockwaves){
+    var finalAngle = staticOffset + driftAngle + dir * angle;
+
+    if (track && o.shockwaves){
       if (this.lastSnap[i] === undefined) this.lastSnap[i] = k;
       else if (k > this.lastSnap[i]){
         this.lastSnap[i] = k;
-        this.shocks.push({ born: te, level: i });
+        this.shocks.push({ born: te, level: i, rot: finalAngle });
       }
     }
 
-    return staticOffset + driftAngle + dir * angle;
+    return finalAngle;
   };
 
+  // Traces one petal-ring path (same shape used by the rings and by the
+  // shockwave echoes) at radius R, in the current (already
+  // translated/rotated) canvas coordinate space.
+  Mandala.prototype._tracePetal = function(R){
+    var ctx = this.ctx, o = this.o;
+    var steps = 180;
+    ctx.beginPath();
+    for (var p = 0; p <= steps; p++){
+      var theta = (p / steps) * Math.PI * 2;
+      var rf = petalRadius(theta, o.folds, o.tipSpan, o.shoulderAt, o.shoulderR, o.valleyR);
+      var r = R * rf;
+      var x = r * Math.cos(theta), y = r * Math.sin(theta);
+      if (p === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+  };
+
+  // Same petal shape as a ring, expanding and fading out from wherever it
+  // fired, at the rotation that ring had at the moment it snapped.
   Mandala.prototype._drawShockwaves = function(baseR, t){
     if (!this.shocks.length) return;
     var ctx = this.ctx, o = this.o, keep = [];
@@ -814,10 +839,10 @@
       keep.push(s);
       var R = baseR * Math.pow(o.levelScale, s.level) * (1 + age * 2.2);
       var alpha = (1 - age / 1.1) * .35 * this.glowMul;
-      if (alpha <= 0) continue;
+      if (alpha <= 0 || R <= 0) continue;
       ctx.save();
-      ctx.beginPath();
-      ctx.arc(0, 0, Math.max(0, R), 0, Math.PI * 2);
+      ctx.rotate(s.rot);
+      this._tracePetal(R);
       ctx.strokeStyle = rgba(this.coreRGB, alpha);
       ctx.lineWidth = 1.5;
       ctx.shadowColor = rgba(this.coreRGB, alpha);
@@ -826,6 +851,46 @@
       ctx.restore();
     }
     this.shocks = keep;
+  };
+
+  // Draws the full `levels` ring stack, scaled by `scaleMul` and running on
+  // its own clock sped up by `speedMul`. Used once at full size for the main
+  // flower, and again tiny + a little faster for the center's self-similar
+  // echo — `track` gates whether that pass is allowed to fire shockwaves
+  // (only the main pass should, so echoes of the same snap aren't doubled).
+  Mandala.prototype._drawRingSet = function(baseR, t, scaleMul, speedMul, track){
+    var ctx = this.ctx, o = this.o;
+    var levels = Math.max(1, o.levels | 0);
+    var strokes = Math.max(1, o.strokes | 0);
+    var tt = t * (speedMul || 1);
+
+    for (var i = levels - 1; i >= 0; i--){
+      var levelFrac = levels > 1 ? i / (levels - 1) : 0;   // 0 outer .. 1 inner
+      var staggerDelay = (o.rotateMode === 'ripple') ? i * (o.stagger || 0) : 0;
+      var te = Math.max(0, tt - staggerDelay);
+
+      var breathe = 1 + .06 * (o.breathe || 0) * Math.sin(tt * .8 - i * (o.cascade || 0) * Math.PI * 2);
+      var R = baseR * scaleMul * Math.pow(o.levelScale, i) * breathe;
+      var rot = this._levelAngle(i, te, track);
+      var color = mix(this.colorRGB, this.coreRGB, levelFrac);
+      var lineW = Math.max(o.ringWidth * o.coreWidth, o.ringWidth * (1 - (o.widthTaper || 0) * levelFrac)) * scaleMul;
+      var alpha = clamp(.85 - levelFrac * .35, .15, .95);
+
+      for (var s = 0; s < strokes; s++){
+        var Rs = R * (1 - s * (o.strokeGap || 0));
+        if (Rs <= 0) continue;
+        ctx.save();
+        ctx.rotate(rot);
+        this._tracePetal(Rs);
+        var sAlpha = alpha * (1 - s / (strokes + 1));
+        ctx.strokeStyle = rgba(color, sAlpha);
+        ctx.shadowColor = rgba(color, Math.min(1, sAlpha * 1.6));
+        ctx.shadowBlur = (6 + (1 - levelFrac) * 14) * (o.glowWidth || 1) * this.glowMul;
+        ctx.lineWidth = Math.max(.6, lineW);
+        ctx.stroke();
+        ctx.restore();
+      }
+    }
   };
 
   Mandala.prototype._draw = function(now){
@@ -837,48 +902,20 @@
     ctx.clearRect(0, 0, W, H);
 
     var baseR = Math.min(W, H) * .46;
-    var levels = Math.max(1, o.levels | 0);
-    var strokes = Math.max(1, o.strokes | 0);
 
     ctx.save();
     ctx.translate(W / 2, H / 2);
     ctx.globalCompositeOperation = 'lighter';
 
-    for (var i = levels - 1; i >= 0; i--){
-      var levelFrac = levels > 1 ? i / (levels - 1) : 0;   // 0 outer .. 1 inner
-      var staggerDelay = (o.rotateMode === 'ripple') ? i * (o.stagger || 0) : 0;
-      var te = Math.max(0, t - staggerDelay);
+    this._drawRingSet(baseR, t, 1, 1, true);
 
-      var breathe = 1 + .06 * (o.breathe || 0) * Math.sin(t * .8 - i * (o.cascade || 0) * Math.PI * 2);
-      var R = baseR * Math.pow(o.levelScale, i) * breathe;
-      var rot = this._levelAngle(i, te);
-      var color = mix(this.colorRGB, this.coreRGB, levelFrac);
-      var lineW = Math.max(o.ringWidth * o.coreWidth, o.ringWidth * (1 - (o.widthTaper || 0) * levelFrac));
-      var alpha = clamp(.85 - levelFrac * .35, .15, .95);
-
-      for (var s = 0; s < strokes; s++){
-        var Rs = R * (1 - s * (o.strokeGap || 0));
-        if (Rs <= 0) continue;
-        ctx.save();
-        ctx.rotate(rot);
-        ctx.beginPath();
-        var steps = 180;
-        for (var p = 0; p <= steps; p++){
-          var theta = (p / steps) * Math.PI * 2;
-          var rf = petalRadius(theta, o.folds, o.tipSpan, o.shoulderAt, o.shoulderR, o.valleyR);
-          var r = Rs * rf;
-          var x = r * Math.cos(theta), y = r * Math.sin(theta);
-          if (p === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-        }
-        ctx.closePath();
-        var sAlpha = alpha * (1 - s / (strokes + 1));
-        ctx.strokeStyle = rgba(color, sAlpha);
-        ctx.shadowColor = rgba(color, Math.min(1, sAlpha * 1.6));
-        ctx.shadowBlur = (6 + (1 - levelFrac) * 14) * (o.glowWidth || 1) * this.glowMul;
-        ctx.lineWidth = lineW;
-        ctx.stroke();
-        ctx.restore();
-      }
+    if (o.core){
+      // Continue the same geometric shrink (levelScale^levels) one step
+      // further, right at the center — a smaller copy of the whole flower,
+      // as if the pattern kept going inward forever.
+      var levels = Math.max(1, o.levels | 0);
+      var coreScale = Math.pow(o.levelScale, levels) * .9;
+      this._drawRingSet(baseR, t, coreScale, o.coreSpeed || 1, false);
     }
 
     if (o.shockwaves) this._drawShockwaves(baseR, t);
@@ -944,7 +981,9 @@ NeonMandala.create('#seal', {
   breathe: 1,
   cascade: 0.1,
   speed: 1,
-  shockwaves: true
+  shockwaves: true,
+  core: true,
+  coreSpeed: 1.6
 }).setGlow(1.2);
 </script>
 </body>
