@@ -62,7 +62,10 @@
       "startDate": "Sept 2025",
       "endDate": "Expected: May 2027",
       "current": true,
-      "description": "GPA: 3.5/4. Concentration in machine learning and computer vision, with coursework spanning applied AI systems, algorithms, and probability for data science.",
+      "description": [
+        "GPA: 3.5/4",
+        "Concentration in machine learning and computer vision, with coursework spanning applied AI systems, algorithms, and probability for data science."
+      ],
       "coursework": ["Foundations of Artificial Intelligence", "Algorithms", "Linear Algebra and Probability for Data Science", "Programming and Data Processing for AI"]
     },
     {
@@ -71,7 +74,10 @@
       "startDate": "Sept 2020",
       "endDate": "July 2024",
       "current": false,
-      "description": "GPA: 3.6/4. Focused on core CS fundamentals alongside AI and NLP electives.",
+      "description": [
+        "GPA: 3.6/4",
+        "Focused on core CS fundamentals alongside AI and NLP electives."
+      ],
       "coursework": [
         "Object Oriented Programming",
         "Computer Networks",
@@ -91,7 +97,7 @@
       "startDate": "Sept 2026",
       "endDate": "Dec 2026",
       "current": true,
-      "description": "",
+      "description": [],
       "skills": []
     },
     {
@@ -100,7 +106,10 @@
       "startDate": "May 2026",
       "endDate": "Aug 2026",
       "current": true,
-      "description": "Built desktop QC/inventory apps in .NET with a cloud-archived database, cutting inspection time from 3 to 1 minute per unit. Trained a YOLO-v11 model on 10,000+ augmented images from industrial machine vision setups (80% detection accuracy), and built Power BI dashboards alongside a RAG chatbot website with automated lead generation.",
+      "description": [
+        "Built desktop QC/inventory apps in .NET with a cloud-archived database, cutting inspection time from 3 to 1 minute per unit.",
+        "Trained a YOLO-v11 model on 10,000+ augmented images from industrial machine vision setups (80% detection accuracy), and built Power BI dashboards alongside a RAG chatbot website with automated lead generation."
+      ],
       "skills": [".NET", "YOLO-v11", "Power BI", "RAG", "SQL"]
     },
     {
@@ -109,7 +118,11 @@
       "startDate": "Aug 2024",
       "endDate": "July 2025",
       "current": false,
-      "description": "Built Power BI dashboards across 10+ departments, increasing operational visibility by 40%. Automated document review workflows with Azure RPA (78 docs/hour, saving 20+ staff hours weekly). Engineered RAG-powered chatbots using OpenAI GPT-4 and Microsoft Copilot with SQL/Dataverse API integration, achieving 85% user adoption in 3 months and automating 80% of customer inquiries, and implemented Azure OpenAI semantic search for real-time patient analytics.",
+      "description": [
+        "Built Power BI dashboards across 10+ departments, increasing operational visibility by 40%.",
+        "Automated document review workflows with Azure RPA (78 docs/hour, saving 20+ staff hours weekly).",
+        "Engineered RAG-powered chatbots using OpenAI GPT-4 and Microsoft Copilot with SQL/Dataverse API integration, achieving 85% user adoption in 3 months and automating 80% of customer inquiries, and implemented Azure OpenAI semantic search for real-time patient analytics."
+      ],
       "skills": ["Power BI", "Azure RPA", "OpenAI GPT-4", "Microsoft Copilot", "SQL", "Dataverse API"]
     },
     {
@@ -118,7 +131,11 @@
       "startDate": "Jan 2024",
       "endDate": "July 2024",
       "current": false,
-      "description": "Developed computer vision POCs for anti-counterfeiting using ResNet, improving detection reliability by 30%. Designed a secure tagging workflow for supply-chain traceability and engineered an OCR-NLP pipeline using Tesseract and spaCy, reducing manual processing by 45%. Led sprint planning and presented findings to senior management to guide R&D strategy.",
+      "description": [
+        "Developed computer vision POCs for anti-counterfeiting using ResNet, improving detection reliability by 30%.",
+        "Designed a secure tagging workflow for supply-chain traceability and engineered an OCR-NLP pipeline using Tesseract and spaCy, reducing manual processing by 45%.",
+        "Led sprint planning and presented findings to senior management to guide R&D strategy."
+      ],
       "skills": ["ResNet", "OCR", "Tesseract", "spaCy", "Computer Vision"]
     },
     {
@@ -127,7 +144,10 @@
       "startDate": "Sept 2023",
       "endDate": "Dec 2023",
       "current": false,
-      "description": "Mentored 50+ students in Java and OOP through weekly Q&A sessions and code reviews, improving assignment accuracy by 40%. Facilitated debugging workshops across multiple lab sections, raising class performance by 15%, and implemented a peer mentoring framework that improved student engagement.",
+      "description": [
+        "Mentored 50+ students in Java and OOP through weekly Q&A sessions and code reviews, improving assignment accuracy by 40%.",
+        "Facilitated debugging workshops across multiple lab sections, raising class performance by 15%, and implemented a peer mentoring framework that improved student engagement."
+      ],
       "skills": ["Java", "OOP", "Mentoring"]
     },
     {
@@ -136,7 +156,10 @@
       "startDate": "June 2022",
       "endDate": "Aug 2022",
       "current": false,
-      "description": "Executed market analysis identifying 70+ qualified client prospects, expanding the sales pipeline by 15%. Optimized digital promotion strategies across company channels, increasing engagement metrics by 25%, and implemented Go-Live workflow automation that reduced project closure time by 10%.",
+      "description": [
+        "Executed market analysis identifying 70+ qualified client prospects, expanding the sales pipeline by 15%.",
+        "Optimized digital promotion strategies across company channels, increasing engagement metrics by 25%, and implemented Go-Live workflow automation that reduced project closure time by 10%."
+      ],
       "skills": ["Market Analysis", "Digital Marketing", "Process Automation"]
     }
   ],
@@ -202,7 +225,7 @@
   "links": [
     { "label": "GitHub",   "url": "https://github.com/mochi-bunny" },
     { "label": "LinkedIn", "url": "https://www.linkedin.com/in/megha-manoj-cs" },
-    { "label": "Resume",   "url": "resume.pdf" }
+    { "label": "Resume",   "url": "https://drive.google.com/file/d/1cXb5g3CDshN0Isy0Rhmsj8urDgG_Ba1K/view?usp=drivesdk" }
   ],
 
   "contact": {

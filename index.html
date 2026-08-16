@@ -386,6 +386,12 @@
     items.forEach(function(t){ ul.appendChild(node('li', null, t)); });
     return ul;
   }
+  function pointList(items){
+    if (!items || !items.length) return null;
+    var ul = node('ul', 'job__points');
+    items.forEach(function(t){ ul.appendChild(node('li', null, t)); });
+    return ul;
+  }
   function pad(n){ return (n < 10 ? '0' : '') + n; }
   function period(a, b){
     a = (a || '').trim(); b = (b || '').trim();
@@ -415,7 +421,12 @@
     art.appendChild(head);
 
     var body = node('div');
-    if (o.description) body.appendChild(node('p', null, o.description));
+    if (Array.isArray(o.description)) {
+      var points = pointList(o.description);
+      if (points) body.appendChild(points);
+    } else if (o.description) {
+      body.appendChild(node('p', null, o.description));
+    }
     var tags = tagList(o.tags);
     if (tags) body.appendChild(tags);
     art.appendChild(body);
