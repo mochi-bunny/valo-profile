@@ -715,6 +715,7 @@
   function mix(a, b, t){ return a.map(function(c, i){ return Math.round(c + (b[i] - c) * t); }); }
   function clamp(v, lo, hi){ return Math.max(lo, Math.min(hi, v)); }
   function easeInOutCubic(t){ return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
 
   // Normalized petal radius (0..1) at angle theta: `folds` lobes, each built
   // from a valley -> shoulder -> flat tip -> shoulder -> valley profile.
@@ -743,6 +744,7 @@
     rotateMode: 'sync', snapDuration: 0, snapInterval: 0, stagger: 0,
     reverse: false, alternate: false, drift: .02, breathe: 1, cascade: 0,
     speed: 1, shockwaves: false,
+    stillness: 1, pause: .3,            // rotateMode:'shudder' only — see _shudderAngle
     core: false, coreSpeed: 1.6         // tiny self-similar copy at the center
   };
 
@@ -794,6 +796,7 @@
   // triggering (and double-counting) shockwaves off the same snaps.
   Mandala.prototype._levelAngle = function(i, te, track){
     var o = this.o;
+    if (o.rotateMode === 'shudder') return this._shudderAngle(i, te, track);
     var dir = (o.alternate && i % 2 === 1) ? -1 : 1;
     if (o.reverse) dir *= -1;
     var staticOffset = (o.levelRotate || 0) * i * Math.PI / 180;
@@ -819,6 +822,81 @@
       if (this.lastSnap[i] === undefined) this.lastSnap[i] = k;
       else if (k > this.lastSnap[i]){
         this.lastSnap[i] = k;
+        this.shocks.push({ born: te, level: i, rot: finalAngle });
+      }
+    }
+
+    return finalAngle;
+  };
+
+  // A scripted double-ripple: stillness, then a small inside-out nudge that
+  // settles, a pause, then a much harder inside-out ripple where the middle
+  // rings whip round fast and stop short, the core barely twitches, and the
+  // outer ring launches and coasts through most of a full turn before
+  // drifting to a stop. With `alternate` on, every other ring mirrors the
+  // whole thing (same timing, opposite direction); each ring's net rotation
+  // from one full cycle persists into the next either way, so nothing
+  // snaps back — it just keeps slowly advancing.
+  Mandala.prototype._shudderAngle = function(i, te, track){
+    var o = this.o;
+    var levels = Math.max(1, o.levels | 0);
+    var step = Math.PI * 2 / o.folds;
+    var stagger = o.stagger || 0;
+    var innerToOuter = levels - 1 - i;   // 0 at the core, biggest at the rim
+    var isCore = i === levels - 1;
+    var isOuter = i === 0;
+
+    // Phase 1 — small ripple: every ring nudges by one lobe-width.
+    var smallAmp = step;
+    var smallDur = .4;
+    var smallDelay = innerToOuter * stagger;
+    var smallSpan = (levels - 1) * stagger + smallDur;
+
+    // Phase 2 — big ripple: role-specific amplitude/duration/easing.
+    var OUTER_BIG_DUR = 2.1;
+    var bigAmp, bigDur, bigEase;
+    if (isCore){
+      bigAmp = step * .4; bigDur = .18; bigEase = easeInOutCubic;
+    } else if (isOuter){
+      bigAmp = Math.PI * 2 * .85; bigDur = OUTER_BIG_DUR; bigEase = easeOutCubic;
+    } else {
+      bigAmp = Math.PI * 2 * .4; bigDur = .3; bigEase = easeInOutCubic;
+    }
+    var bigDelay = innerToOuter * stagger;
+    // The rim both starts latest and runs longest, so its own finish time
+    // is always the span's upper bound — no need to scan every ring's role.
+    var bigSpan = (levels - 1) * stagger + OUTER_BIG_DUR;
+
+    var cycleLen = (o.stillness || 0) + smallSpan + (o.pause || 0) + bigSpan + (o.pause || 0);
+    var cycleIndex = Math.floor(te / cycleLen);
+    var tc = te - cycleIndex * cycleLen;
+
+    var smallStart = (o.stillness || 0) + smallDelay;
+    var smallP = clamp((tc - smallStart) / smallDur, 0, 1);
+    var smallVal = smallAmp * easeInOutCubic(smallP);
+
+    var bigPhaseStart = (o.stillness || 0) + smallSpan + (o.pause || 0);
+    var bigStart = bigPhaseStart + bigDelay;
+    var bigP = clamp((tc - bigStart) / bigDur, 0, 1);
+    var bigVal = bigAmp * bigEase(bigP);
+
+    var perCycle = smallAmp + bigAmp;          // net persistent turn per full cycle
+    // Alternating rings spin opposite ways — the whole choreographed
+    // motion (small nudge + big ripple + cumulative carry-over) just gets
+    // mirrored in sign for every other ring, timing untouched.
+    var dir = (o.alternate && i % 2 === 1) ? -1 : 1;
+    if (o.reverse) dir *= -1;
+    // `drift` layers a constant smooth rotation under the whole
+    // choreography (using the unwrapped `te`, not the cycle-local `tc`) —
+    // set it above 0 if you don't want the stillness phase to be
+    // perfectly frozen.
+    var driftAngle = dir * (o.drift || 0) * te;
+    var finalAngle = dir * (cycleIndex * perCycle + smallVal + bigVal) + driftAngle;
+
+    if (track && o.shockwaves){
+      if (this.lastSnap[i] === undefined) this.lastSnap[i] = cycleIndex;
+      else if (cycleIndex > this.lastSnap[i]){
+        this.lastSnap[i] = cycleIndex;
         this.shocks.push({ born: te, level: i, rot: finalAngle });
       }
     }
@@ -987,16 +1065,16 @@ NeonMandala.create('#seal', {
   widthTaper: 0.46,
   coreWidth: 0.23,
   glowWidth: 1.7,
-  rotateMode: 'ripple',
-  snapDuration: 3.3,
-  snapInterval: 6.5,
-  stagger: 0.5,
+  rotateMode: 'shudder',
+  stillness: 1,
+  pause: 0.35,
+  stagger: 0.15,
   reverse: false,
   alternate: true,
-  drift: 0,
+  drift: 0.8,
   breathe: 1,
   cascade: 0.1,
-  speed: 1,
+  speed: 0.7,
   shockwaves: true,
   core: true,
   coreSpeed: 1.6
