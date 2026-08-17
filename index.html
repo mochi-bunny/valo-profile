@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style2.css">
+<link rel="stylesheet" href="style2.css?v=3">
 
 <!--
   ─────────────────────────────────────────────────────────────
@@ -40,11 +40,11 @@
   </div>
   <div class="bar__status"><i class="dot"></i>Open to work</div>
   <nav class="sidenav" aria-label="Sections">
-    <a href="#skills">Skills</a>
-    <a href="#education">Education</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#extracurriculars">Extracurriculars</a>
+    <a href="#skills"><span class="sidenav__n" aria-hidden="true">01</span> Skills</a>
+    <a href="#education"><span class="sidenav__n" aria-hidden="true">02</span> Education</a>
+    <a href="#experience"><span class="sidenav__n" aria-hidden="true">03</span> Experience</a>
+    <a href="#projects"><span class="sidenav__n" aria-hidden="true">04</span> Projects</a>
+    <a href="#extracurriculars"><span class="sidenav__n" aria-hidden="true">05</span> Extracurriculars</a>
   </nav>
   <div class="bar__cta">
     <!-- EDIT: point at your actual resume file -->
@@ -636,6 +636,22 @@
     Object.keys(links).forEach(function(id){
       var s = document.getElementById(id);
       if (s) spy.observe(s);
+    });
+
+    // Number keys jump to the matching section — 0 for home, 1-5 for the
+    // sidenav sections in the same order their numbers are shown in.
+    // Scrolls into view without touching location.hash, so a reload always
+    // lands back on plain index.html.
+    var sectionOrder = Object.keys(links);
+    document.addEventListener('keydown', function(e){
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)) return;
+      if (e.key !== '0' && !/^[1-9]$/.test(e.key)) return;
+      var n = parseInt(e.key, 10);
+      if (n > sectionOrder.length) return;
+      var targetId = n === 0 ? 'home' : sectionOrder[n - 1];
+      var target = document.getElementById(targetId);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
     // Skills / Projects horizontal scroll strips — arrow buttons page the
