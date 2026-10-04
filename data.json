@@ -24,7 +24,7 @@
 
   "skills": [
     {
-      "group": "Machine Learning & AI",
+      "group": "ML & GenAI",
       "note": "Core",
       "items": ["PyTorch", "TensorFlow / Keras", "Scikit-Learn", "Hugging Face", "LangChain", "RAG", "OpenAI", "Gemini"]
     },
@@ -34,14 +34,14 @@
       "items": ["Python", "C#", "SQL", "C++", "Java", "JavaScript", "TypeScript", "R"]
     },
     {
-      "group": "Deep Learning",
+      "group": "Vision, NLP & Robotics",
       "note": "Domain",
-      "items": ["CNN", "U-Net", "Image Segmentation", "Computer Vision", "NLP", "OpenCV"]
+      "items": ["Computer Vision", "Image Segmentation", "CNN", "U-Net", "OpenCV", "NLP", "ROS 2"]
     },
     {
-      "group": "Cloud & Platform",
+      "group": "Cloud & DevOps",
       "note": "Tooling",
-      "items": ["Azure (App Service, OpenAI Service, RPA)", "AWS SageMaker", "Docker", "MySQL", "Firebase", "MongoDB", "Linux", "Git"]
+      "items": ["Azure (App Service, OpenAI Service, RPA)", "AWS SageMaker", "Docker", "Linux", "Git"]
     },
     {
       "group": "Data & Visualization",
@@ -49,9 +49,9 @@
       "items": ["Power BI", "Pandas", "NumPy", "Matplotlib", "Seaborn"]
     },
     {
-      "group": "Development",
+      "group": "Web & Databases",
       "note": "Full Stack",
-      "items": ["Django", "Flask", "Next.js", "REST APIs", "Streamlit", "HTML/CSS"]
+      "items": ["Django", "Flask", "Next.js", "REST APIs", "Streamlit", "HTML/CSS", "MySQL", "MongoDB", "Firebase"]
     }
   ],
 
@@ -171,14 +171,16 @@
       "description": "Built the Discord bot and scheduler LLM for Hyperion, a 24/7 operations supervisor for robot fleets that runs entirely on a Dell Pro Max GB10 with zero cloud model calls. Designed the escalation logic for which incidents reach people, modeled on supply-chain operations, warranty and maintenance policies, and routine hardware health checks. Turned supervisor tickets into plain-English Discord cards with one-reaction approvals, using a local Qwen3.6-35B on vLLM to write debriefs in under a second for a 20-robot simulated warehouse.",
       "skills": ["Python", "discord.py", "aiohttp", "vLLM", "Qwen", "NemoClaw", "Docker"],
       "link": "https://github.com/mochi-bunny/navfix",
+      "media": { "src": "media/command-center.png", "alt": "" },
       "metric": { "value": "4th Place", "label": "Dell × NVIDIA GB10 Hackathon" }
     },
     {
       "name": "Leap: TII CrowdLabel Challenge",
-      "kind": "Competition",
+      "kind": "Hackathon",
       "description": "Led development of an AI-powered crowdsourcing platform with LLM-based automated feedback, adaptive difficulty adjustment, and gamification, achieving first place in TII's Crowd Labelling Challenge. Deployed on Azure App Service using Django and SQL, with user clustering for competitive ranking and Power BI dashboards tracking engagement patterns.",
       "skills": ["Python", "Azure", "Django", "MySQL", "Docker", "Power BI"],
       "link": "https://github.com/mochi-bunny",
+      "media": { "src": "media/leap.png", "alt": "" },
       "metric": { "value": "1st Place", "label": "TII Crowd Labelling Challenge" }
     },
     {
@@ -187,6 +189,7 @@
       "description": "Built a desktop application digitizing manual GelSight probe QC into a structured, auditable workflow. Integrated YOLO for live defect detection on custom-preprocessed probe images, a separate FlyCapture camera + OCR step for product/serial extraction, and a Review dashboard backed by a normalized SQLite schema.",
       "skills": ["C#", ".NET", "SQLite", "YOLO", "OpenCvSharp", "FlyCapture SDK"],
       "link": "https://github.com/mochi-bunny/quality-inspection",
+      "media": { "src": "media/qc_inspect.jpeg", "alt": "" },
       "metric": { "value": "3 min → 1 min", "label": "inspection time per unit" }
     },
     {
@@ -195,6 +198,7 @@
       "description": "Led a 5-member team building a U-Net segmentation model for sonar-based marine debris detection, with a custom data augmentation pipeline and a Streamlit interface for real-time inference.",
       "skills": ["Python", "TensorFlow", "Keras", "OpenCV", "Streamlit"],
       "link": "https://github.com/mochi-bunny/SIC-project",
+      "media": { "src": "media/sic.png", "alt": "" },
       "metric": { "value": "0.85", "label": "Dice similarity score" }
     },
     {
@@ -203,6 +207,7 @@
       "description": "Career pathway platform integrating Google Sheets API and a RAG application using Gemini for real-time job market insights, built during the Headstarter AI Fellowship.",
       "skills": ["React.js", "Next.js", "Firebase", "Gemini API"],
       "link": "https://github.com/mochi-bunny/OptiTunity",
+      "media": { "src": "", "alt": "" },
       "metric": { "value": "", "label": "" }
     }
   ],

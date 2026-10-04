@@ -534,7 +534,43 @@
     }));
   }
 
+  // Project media: { "src": "demo.mp4", "alt": "...", "poster": "thumb.jpg" }.
+  // Videos (by extension, or "type": "video") autoplay muted on a loop like a
+  // GIF; anything else is an <img>. Empty/missing src means no media.
+  function hasMedia(pr){ return !!(pr && pr.media && pr.media.src); }
+
+  function projectMedia(m){
+    var frame = node('div', 'card__media');
+    if (!m || !m.src) {
+      frame.classList.add('card__media--empty');
+      frame.setAttribute('aria-hidden', 'true');
+      return frame;
+    }
+    var isVideo = m.type === 'video' || /\.(mp4|webm|mov|m4v|ogv)(\?|#|$)/i.test(m.src);
+    var el;
+    if (isVideo) {
+      el = node('video');
+      el.muted = true; el.loop = true; el.autoplay = true; el.playsInline = true;
+      el.preload = 'metadata';
+      if (m.poster) el.poster = m.poster;
+      if (m.alt) el.setAttribute('aria-label', m.alt);
+    } else {
+      el = node('img');
+      el.alt = m.alt || '';
+      el.loading = 'lazy';
+      el.decoding = 'async';
+    }
+    el.src = m.src;
+    var bg = isVideo ? m.poster : m.src;
+    if (bg) frame.style.setProperty('--media-bg', 'url("' + encodeURI(bg) + '")');
+    frame.appendChild(el);
+    return frame;
+  }
+
   function renderProjects(list){
+    // If any card has media, every card gets a media slot (empty ones show a
+    // blank frame) so titles, copy and stats stay aligned across the row.
+    var anyMedia = (list || []).some(hasMedia);
     fill(q('.cards'), (list || []).map(function(pr, i){
       var card = node('article', 'card notch fade');
 
@@ -552,6 +588,8 @@
         h3.textContent = pr.name || '';
       }
       card.appendChild(h3);
+
+      if (anyMedia) card.appendChild(projectMedia(pr.media));
 
       if (pr.description) card.appendChild(node('p', null, pr.description));
 
@@ -745,6 +783,7 @@
     reverse: false, alternate: false, drift: .02, breathe: 1, cascade: 0,
     speed: 1, shockwaves: false,
     stillness: 1, pause: .3,            // rotateMode:'shudder' only — see _shudderAngle
+    outerSweepDuration: 2.1,            // shudder only — how long the rim's big-ripple launch+coast takes
     core: false, coreSpeed: 1.6         // tiny self-similar copy at the center
   };
 
@@ -853,7 +892,7 @@
     var smallSpan = (levels - 1) * stagger + smallDur;
 
     // Phase 2 — big ripple: role-specific amplitude/duration/easing.
-    var OUTER_BIG_DUR = 2.1;
+    var OUTER_BIG_DUR = o.outerSweepDuration || 2.1;
     var bigAmp, bigDur, bigEase;
     if (isCore){
       bigAmp = step * .4; bigDur = .18; bigEase = easeInOutCubic;
@@ -1067,14 +1106,15 @@ NeonMandala.create('#seal', {
   glowWidth: 1.7,
   rotateMode: 'ripple',
   stillness: 1,
-  pause: 0.35,
+  pause: 0.25,
   stagger: 0.15,
+  outerSweepDuration: 3.2,
   reverse: false,
   alternate: true,
   drift: 0.8,
   breathe: 1,
   cascade: 0.1,
-  speed: 0.7,
+  speed: 0.35,
   shockwaves: true,
   core: true,
   coreSpeed: 1.6
