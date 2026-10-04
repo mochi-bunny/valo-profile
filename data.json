@@ -171,7 +171,7 @@
       "description": "Built the Discord bot and scheduler LLM for Hyperion, a 24/7 operations supervisor for robot fleets that runs entirely on a Dell Pro Max GB10 with zero cloud model calls. Designed the escalation logic for which incidents reach people, modeled on supply-chain operations, warranty and maintenance policies, and routine hardware health checks. Turned supervisor tickets into plain-English Discord cards with one-reaction approvals, using a local Qwen3.6-35B on vLLM to write debriefs in under a second for a 20-robot simulated warehouse.",
       "skills": ["Python", "discord.py", "aiohttp", "vLLM", "Qwen", "NemoClaw", "Docker"],
       "link": "https://github.com/mochi-bunny/navfix",
-      "media": { "src": "media/command-center.png", "alt": "" },
+      "media": { "src": "media/command-center.mp4", "alt": "" },
       "metric": { "value": "4th Place", "label": "Dell × NVIDIA GB10 Hackathon" }
     },
     {
