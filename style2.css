@@ -225,7 +225,7 @@ a{color:inherit;text-decoration:none}
 }
 .name .l2{
   display:block;color:transparent;
-  -webkit-text-stroke:2px rgba(236,232,225,.7);
+  -webkit-text-stroke:4px rgba(236,232,225,.8);
   margin-left:.05em;
 }
 .reveal{animation:wipe .9s cubic-bezier(.2,.8,.2,1) both}
